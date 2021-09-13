@@ -1,45 +1,44 @@
-import { POSTS_SET, POSTS_LOADING, POSTS_ERROR, POSTS_ITEM } from './postsAction';
+import {
+  POSTS_GET,
+  POSTS_SET_LOADING,
+  POSTS_SET_ERROR,
+  POSTS_GET_ITEM,
+} from './postsTypes';
 
 const initialState = {
   posts: [],
-  loading: false,
+  loading: true,
   error: false,
-  item: {},
-}
+  item: null,
+};
 
-export const postReducer = (state = initialState, action) => {
+export const postsReducer = (state = initialState, action) => {
   switch (action.type) {
-    case POSTS_SET: {
+    case POSTS_GET: {
       return {
         ...state,
-        posts: action.payload
-      }
+        posts: action.payload,
+      };
     }
-    case POSTS_LOADING: {
+    case POSTS_SET_LOADING: {
       return {
         ...state,
-        loading: action.payload
-      }
+        loading: action.payload,
+      };
     }
-    case POSTS_ERROR: {
+    case POSTS_SET_ERROR: {
       return {
         ...state,
-        error: action.payload
-      }
+        error: action.payload,
+      };
     }
-    case POSTS_ITEM: {
-      const id = action.payload;
-      const item = state.posts.find(item => item.id === id);
-      const newItem = {
-        ...item
-      }
-      const obj = {
+    case POSTS_GET_ITEM: {
+      return {
         ...state,
-        item : newItem
-      }
-      return obj
+        item: action.payload,
+      };
     }
     default:
       return state;
   }
-}
+};
