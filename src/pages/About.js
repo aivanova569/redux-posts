@@ -1,39 +1,23 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useHistory, useParams } from 'react-router-dom';
-import {useDispatch, connect, useSelector} from "react-redux";
+import {useDispatch, connect} from "react-redux";
 import { Container, Button } from "react-bootstrap";
-import { getPosts } from "../store/posts/postsAction";
+import { getOnePost } from "../store/posts/postsAction";
 
-const About = () => {
+const About = ({ item }) => {
   const history = useHistory();
-  const { postId } = useParams();
-  // const [post, setPost] = useState();
+  let { postId } = useParams();
+  postId = Number.parseInt(postId);
   const dispatch = useDispatch();
-  const item = useSelector((state) => state.item);
-  console.log(item);
+
   useEffect( () => {
-    dispatch(getPosts());
+    dispatch(getOnePost(postId));
   }, []);
+
   return (
     <Container style={{paddingTop: '2rem', paddingBottom: '2rem'}}>
-      {/*{*/}
-      {/*  items.map(item => {*/}
-      {/*    const {title, body, id} = item;*/}
-      {/*    return (*/}
-      {/*      <div key={id}>*/}
-      {/*        <h1>{title}</h1>*/}
-      {/*        <p>*/}
-      {/*          {body}*/}
-      {/*        </p>*/}
-      {/*      </div>*/}
-      {/*    )*/}
-      {/*  })*/}
-      {/*}*/}
-      <h1>About</h1>
-      <p>
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab alias amet atque cumque dignissimos fugit officia
-        pariatur, ratione totam veniam. Asperiores dolor, ipsam laborum odit sit vero voluptatum! Impedit, ipsa.
-      </p>
+      <h1>{item.title}</h1>
+      <p>{item.body}</p>
       <Button onClick={() => history.push('/')}>Return</Button>
     </Container>
   )

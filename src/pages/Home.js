@@ -29,7 +29,6 @@ const Home = () => {
                     <Card.Title>{post.title}</Card.Title>
                     <Card.Text>{post.body}</Card.Text>
                     <Button onClick={() => history.push(`/about/${post.id}`)} variant="primary">Learn more</Button>
-                    {/*<Button style={{marginLeft: '1rem'}} variant="light">Remove</Button>*/}
                   </Card.Body>
                 </Card>
               </Col>

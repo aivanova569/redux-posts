@@ -31,23 +31,15 @@ export const postReducer = (state = initialState, action) => {
       const id = action.payload;
       const item = state.posts.find(item => item.id === id);
       const newItem = {
-        title: item.title,
-        body: item.body,
+        ...item
       }
-      return {
-        ...state.item,
-        item: {
-          newItem
-        }
+      const obj = {
+        ...state,
+        item : newItem
       }
+      return obj
     }
-    // case DELETE_POST:
-    //   return {
-    //     ...state,
-    //     posts: state.posts.filter(post => post !== action.payload)
-    //   };
     default:
       return state;
-
   }
 }

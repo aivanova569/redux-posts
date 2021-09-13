@@ -1,0 +1,16 @@
+Test task for React Frontend developer position
+
+Description: build simple CRUD blog app
+
+Requirements:
+Setup new react app from scratch (with linters and all what you need)
+Setup React-redux state management
+Setup React-router-dom routing
+Use https://jsonplaceholder.typicode.com/ as data
+Use AXIOS for handling API requests
+The selected way of styling the application - styled components (React Bootstrap).
+
+The app have next functions:
+Show maximum 10 blog posts on main page
+Each post must be a link, which opens detailed article info on route /post/:id, and also have back to main button
+Add new post with popup (modal) from main page

@@ -3,7 +3,6 @@ import axios from 'axios';
 export const POSTS_SET = 'POSTS_SET';
 export const POSTS_LOADING = 'POSTS_LOADING';
 export const POSTS_ERROR = 'POSTS_ERROR';
-// export const DELETE_POST = 'DELETE_POST';
 export const POSTS_ITEM = 'POSTS_ITEM';
 
 
@@ -27,18 +26,11 @@ export const setItemAction = (id) => ({
   payload: id,
 });
 
-// export const deletePostAction = (id) => ({
-//   type: DELETE_POST,
-//   payload: id,
-// });
-
-
 export const getPosts = () => async (dispatch) => {
   try {
     dispatch(setLoadingAction(true));
    const {data} = await axios.get(`https://jsonplaceholder.typicode.com/posts/?_limit=10`);
    dispatch(setPostsAction(data));
-   dispatch(setItemAction());
   } catch (error){
     dispatch(setErrorAction(true));
     console.log(error);
@@ -47,3 +39,13 @@ export const getPosts = () => async (dispatch) => {
   }
 }
 
+export const getOnePost = (id) => (dispatch) => {
+  try {
+    dispatch(setItemAction(id));
+  } catch (error){
+    dispatch(setErrorAction(true));
+    console.log(error);
+  } finally {
+    dispatch(setLoadingAction(false));
+  }
+}
