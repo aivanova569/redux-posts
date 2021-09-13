@@ -1,18 +1,26 @@
-import React from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import Home from './pages/Home';
-import About from './pages/About';
+import React, { useEffect } from 'react';
+import { Route, Switch } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 
-function App() {
+// Actions
+import { getPosts } from 'store/posts/postsAction';
+// Components
+import Home from './pages/Home';
+import PostDetails from './pages/PostDetails/PostDetails';
+
+const App = () => {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getPosts());
+  }, []);
+
   return (
-    <Router>
-      <Switch>
-        <Route exact path="/" component={Home}/>
-        <Route path="/about/:postId" component={About}/>
-      </Switch>
-    </Router>
+    <Switch>
+      <Route exact path="/" component={Home} />
+      <Route path="/post/:id" component={PostDetails} />
+    </Switch>
   );
-}
+};
 
 export default App;

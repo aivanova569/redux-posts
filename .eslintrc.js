@@ -1,0 +1,48 @@
+module.exports = {
+  env: {
+    browser: true,
+    es2021: true,
+  },
+  extends: [
+    'plugin:react/recommended',
+    'plugin:react-hooks/recommended',
+    'airbnb',
+  ],
+  parserOptions: {
+    ecmaFeatures: {
+      jsx: true,
+    },
+    ecmaVersion: 12,
+    sourceType: 'module',
+  },
+  plugins: [
+    'react',
+  ],
+  rules: {
+    'linebreak-style': ['off', 'windows'],
+    'react/prop-types': 0,
+    'react/require-default-props': 0,
+    'react/no-unused-prop-types': 0,
+    'react/jsx-props-no-spreading': 0,
+    'react/jsx-one-expression-per-line': 'off',
+    'react/jsx-filename-extension': 0,
+    'import/no-unresolved': 0,
+    'import/extensions': 0,
+    'import/no-extraneous-dependencies': 0,
+    'import/prefer-default-export': 0,
+    'jsx-a11y/label-has-associated-control': 0,
+    'jsx-a11y/anchor-is-valid': 0,
+    'jsx-a11y/control-has-associated-label': 0,
+    'jsx-a11y/click-events-have-key-events': 0,
+    'no-param-reassign': ['error', { props: false }],
+    'no-plusplus': 0,
+    'no-shadow': 0,
+    'no-console': 1,
+    'no-use-before-define': 0,
+    'no-unused-vars': 1,
+    'no-undef': 1,
+    'no-underscore-dangle': 0,
+    'no-explicit-any': 0,
+    'quote-props': 0,
+  },
+};
